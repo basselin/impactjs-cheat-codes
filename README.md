@@ -46,7 +46,7 @@ ig.module(
 	this.cheats.addCode('IDDAD',
 		[ig.KEY.I, ig.KEY.D, ig.KEY.D, ig.KEY.A, ig.KEY.D],
 		function() {
-			ig.game.cheats.remove( 'IDDAD' );
+			ig.game.cheats.removeCode( 'IDDAD' );
 			// Your code for this cheat
 		});
 ```
