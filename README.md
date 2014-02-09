@@ -1,6 +1,6 @@
 # Make Cheat Codes in your ImpactJS game
 
-This lite plugin can make cheat codes easyly in ImpactJS during the game.
+CheatCodes is a simple plugin that can make cheat codes easily in ImpactJS during the game.
 
 
 ## Usage
@@ -46,7 +46,7 @@ ig.module(
 	this.cheats.addCode('IDDAD',
 		[ig.KEY.I, ig.KEY.D, ig.KEY.D, ig.KEY.A, ig.KEY.D],
 		function() {
-			ig.game.cheats.removeCode( 'IDDAD' );
+			this.cheats.removeCode( 'IDDAD' );
 			// Your code for this cheat
 		});
 ```
@@ -57,9 +57,10 @@ ig.module(
 * **addCode**: Add a cheat code.
 	* *name*: `String` Name of cheat.
 	* *keys*: `Array` Array of keys. See: `ig.KEY.`.
-	* *success*: `Function` Attach a function when the code is correct.
+	* *success*: `Function` Attach a function when the code is correct. The value of `ig.game` provided for the call to `success`.
 * **removeCode**: Remove a cheat code.
 	* *name*: `String` Name of cheat.
+* **removeAllCodes**: Remove all the cheat codes.
 
 
 ## Changelog
