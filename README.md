@@ -28,7 +28,7 @@ ig.module(
 			
 			// All weapons !
 			this.cheats.addCode('IDKFQ',
-				[ig.KEY.I, ig.KEY.D, ig.KEY.K, ig.KEY.F, ig.KEY.Q],
+				[ ig.KEY.I, ig.KEY.D, ig.KEY.K, ig.KEY.F, ig.KEY.Q ],
 				function() {
 					ig.game.myEntityPlayer.weaponBullets = 99999;
 				});
@@ -64,6 +64,9 @@ ig.module(
 
 
 ## Changelog
+
+**Version 1.0.1**
+* Optimization
 
 **Version 1.0**
 * First commit

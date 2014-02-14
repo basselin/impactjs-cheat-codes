@@ -1,5 +1,5 @@
 /*!
- * cheat-codes.js v1.0.0
+ * cheat-codes.js v1.0.1
  * (c) 2014, Benoit Asselin contact(at)ab-d.fr
  * MIT Licence
  */
@@ -13,7 +13,7 @@ ig.module(
 .defines(function() { "use strict";
 
 ig.CheatCodes = ig.Class.extend({
-	codes: { },
+	codes: {},
 	
 	init: function() {
 		ig.CheatCodes.instances.push( this );
@@ -36,14 +36,15 @@ ig.CheatCodes = ig.Class.extend({
 	},
 	
 	removeAllCodes: function() {
-		this.codes = { };
+		this.codes = {};
 		ig.CheatCodes.calcQueueMax();
 	},
 	
 	checkCodes: function() {
-		for( var name in this.codes ) {
-			var code = this.codes[name];
-			var begin = ig.CheatCodes.queueMax - code.keysLen;
+		var name, code, begin;
+		for( name in this.codes ) {
+			code = this.codes[name];
+			begin = ig.CheatCodes.queueMax - code.keysLen;
 			if( ig.CheatCodes.keysQueue.slice(begin).join() == code.keys ) {
 				code.success.apply( ig.game );
 			}
@@ -54,15 +55,17 @@ ig.CheatCodes = ig.Class.extend({
 
 
 
-ig.CheatCodes.instances = [ ];
-ig.CheatCodes.keysQueue = [ ]; // keydown
+ig.CheatCodes.instances = [];
+ig.CheatCodes.keysQueue = []; // keydown
 ig.CheatCodes.queueMax = 0;
 ig.CheatCodes.calcQueueMax = function() {
 	ig.CheatCodes.queueMax = 0;
-	for( var i = 0; i < ig.CheatCodes.instances.length; i++ ) {
-		var cheatCodes = ig.CheatCodes.instances[i];
-		for( var name in cheatCodes.codes ) {
-			var code = cheatCodes.codes[name];
+	var i = 0, cheatCodes,
+	    name, code;
+	for( ; i < ig.CheatCodes.instances.length; ++i ) {
+		cheatCodes = ig.CheatCodes.instances[i];
+		for( name in cheatCodes.codes ) {
+			code = cheatCodes.codes[name];
 			if( ig.CheatCodes.queueMax < code.keysLen ) {
 				ig.CheatCodes.queueMax = code.keysLen;
 			}
@@ -81,7 +84,7 @@ ig.CheatCodes.keydown = function( event ) {
 			ig.CheatCodes.keysQueue.shift();
 		}
 		
-		for( var i = 0; i < ig.CheatCodes.instances.length; i++ ) {
+		for( var i = 0; i < ig.CheatCodes.instances.length; ++i ) {
 			ig.CheatCodes.instances[i].checkCodes();
 		}
 	}
