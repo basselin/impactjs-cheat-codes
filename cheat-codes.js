@@ -60,9 +60,9 @@ ig.CheatCodes.keysQueue = []; // keydown
 ig.CheatCodes.queueMax = 0;
 ig.CheatCodes.calcQueueMax = function() {
 	ig.CheatCodes.queueMax = 0;
-	var i = 0, cheatCodes,
+	var i, l, cheatCodes,
 	    name, code;
-	for( ; i < ig.CheatCodes.instances.length; ++i ) {
+	for( i = 0, l = ig.CheatCodes.instances.length; i < l; ++i ) {
 		cheatCodes = ig.CheatCodes.instances[i];
 		for( name in cheatCodes.codes ) {
 			code = cheatCodes.codes[name];
@@ -84,7 +84,7 @@ ig.CheatCodes.keydown = function( event ) {
 			ig.CheatCodes.keysQueue.shift();
 		}
 		
-		for( var i = 0; i < ig.CheatCodes.instances.length; ++i ) {
+		for( var i = 0, l = ig.CheatCodes.instances.length; i < l; ++i ) {
 			ig.CheatCodes.instances[i].checkCodes();
 		}
 	}
